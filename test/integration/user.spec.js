@@ -1,7 +1,7 @@
 const request = require('supertest');
 const should = require('should');
-const app = require('../../');
-const models = require('../../models')
+const app = require('../..');
+const models = require('../../db/models')
 
 describe('GET /users는', () => {
     const users = [

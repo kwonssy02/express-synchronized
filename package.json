@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test mocha api/user/user.spec.js -w",
-    "start": "node bin/www.js"
+    "start": "node bin/www.js",
+    "test": "npm run test-integration",
+    "test-unit": "cross-env NODE_ENV=test ./node_modules/.bin/mocha test/unit/*.spec.js",
+    "test-integration": "cross-env NODE_ENV=test ./node_modules/.bin/mocha test/integration/*.spec.js -w",
+    "seed": "node_modules/.bin/sequelize db:seed:all"
   },
   "author": "",
   "license": "ISC",
@@ -13,10 +16,13 @@
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "morgan": "^1.9.1",
+    "mysql2": "^1.7.0",
     "sequelize": "^5.18.4",
+    "sequelize-cli": "^5.5.1",
     "sqlite3": "^4.1.0"
   },
   "devDependencies": {
+    "cross-env": "^6.0.0",
     "mocha": "^6.2.0",
     "should": "^13.2.3",
     "supertest": "^4.0.2"
