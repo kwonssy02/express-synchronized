@@ -1,7 +1,6 @@
 const app = require('../index');
-var debug = require('debug')('express-sequelize');
+var debug = require('debug');
 const http = require('http');
-const models = require('../db/models');
 
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
@@ -13,11 +12,9 @@ const options = {
     force: process.env.NODE_ENV === 'test' ? true : false
 };
 
-models.sequelize.sync(options).then(() => {
-    server.listen(port);
-    server.on('error', onError);
-    server.on('listening', onListening);
-});
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
 
 function normalizePort(val) {
     var port = parseInt(val, 10);

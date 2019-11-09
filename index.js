@@ -1,7 +1,7 @@
 var express = require('express');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
-var user = require('./api/user')
+var test = require('./api/test')
 
 var app = express();
 
@@ -11,7 +11,7 @@ if(process.env.NODE_ENV !== 'test') {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use('/users', user);
+app.use('/test', test);
 
 app.use((req, res, next) => { // 404 처리 부분
   res.status(404).send();
